@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}{{ product.display_name }}{% endblock %}
+{% block content %}
+<nav class="breadcrumb"><a href="/public/">← produtos</a></nav>
+<h1>{{ product.display_name }}</h1>
+<h2>Lojas que vendem — menor preço primeiro</h2>
+
+{% if not listings %}
+<p class="empty">Nenhuma oferta disponível no momento.</p>
+{% else %}
+<div class="comparison-list">
+  {% for l in listings %}
+  <a class="comparison-row" href="{{ l.url }}" target="_blank" rel="noopener">
+    <div class="thumb-wrap">
+      {% if l.image_url %}
+        <img src="{{ l.image_url }}" alt="" loading="lazy">
+      {% else %}
+        <div class="no-photo">📦</div>
+      {% endif %}
+    </div>
+    <div class="info">
+      <span class="site-badge site-{{ l.site }}">{{ l.site }}</span>
+      <p class="title">{{ l.title }}</p>
+      {% if l.seller %}<p class="seller">vendedor: {{ l.seller }}</p>{% endif %}
+    </div>
+    <div class="price-col">
+      <span class="price">R$ {{ "%.2f"|format(l.current_price) }}</span>
+      {% if l.original_price and l.original_price > l.current_price %}
+        <s class="original">R$ {{ "%.2f"|format(l.original_price) }}</s>
+      {% endif %}
+      <span class="go">Ir à loja →</span>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
+
+<h2>Evolução do Menor Preço</h2>
+<div class="chart-wrap"><canvas id="minPriceChart"></canvas></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/luxon@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1"></script>
+<script>
+const series = {{ history_json | safe }};
+if (!series.length) {
+  document.querySelector('.chart-wrap').innerHTML =
+    '<p class="empty">Sem histórico suficiente para gerar o gráfico.</p>';
+} else {
+  new Chart(document.getElementById('minPriceChart'), {
+    type: 'line',
+    data: {
+      datasets: [{
+        label: 'Menor Preço Histórico',
+        data: series,
+        borderColor: '#4caf50',
+        backgroundColor: '#4caf5033',
+        tension: 0.2,
+        pointRadius: 4,
+        fill: true
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { type: 'time', time: { unit: 'day', tooltipFormat: 'dd/MM/yyyy' } },
+        y: {
+          beginAtZero: false,
+          ticks: { callback: v => 'R$ ' + Number(v).toFixed(2) }
+        },
+      },
+      plugins: {
+        legend: { position: 'bottom' },
+        tooltip: {
+          callbacks: {
+            label: ctx => 'R$ ' + ctx.parsed.y.toFixed(2)
+          }
+        }
+      },
+    }
+  });
+}
+</script>
+{% endblock %}
