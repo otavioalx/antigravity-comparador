@@ -1,4 +1,4 @@
-# ⚡ ProPrice: Advanced Comparison Engine
+# ⚡ Comparador: Advanced Comparison Engine
 
 <p align="center">
   <img src="https://img.shields.io/badge/IDE-Antigravity-black?style=for-the-badge&logo=python&logoColor=white" />
