@@ -1,4 +1,9 @@
-**⚡Price Comparator⚡**
+#**⚡Price Comparator⚡**
+
+<p align="center">
+  <img src="https://img.shields.io/badge/IDE-Antigravity-black?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Level-Independent_Build-black?style=for-the-badge" />
+</p>
 
 ### 🚀 O Diferencial
 Diferente das soluções convencionais, este comparador foi construído de forma independente utilizando a IDE Antigravity. O foco foi criar uma arquitetura de alta performance que simula a experiência completa de plataformas como o Zoom, indo além da busca simples e focando em inteligência de dados.
