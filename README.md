@@ -1,4 +1,4 @@
-﻿####**⚡Price Comparator⚡**
+**⚡Price Comparator⚡**
 
 ### 🚀 O Diferencial
 Diferente das soluções convencionais, este comparador foi construído de forma independente utilizando a IDE Antigravity. O foco foi criar uma arquitetura de alta performance que simula a experiência completa de plataformas como o Zoom, indo além da busca simples e focando em inteligência de dados.
