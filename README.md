@@ -17,4 +17,5 @@ Diferente das soluções convencionais, este comparador foi construído de forma
 ### 🏗️ Arquitetura Técnica & Desafios
 O maior desafio técnico foi a implementação da lógica de monitoramento de preços. Utilizando os recursos do Antigravity, estruturei um fluxo onde os dados são validados e atualizados nos gráficos, garantindo precisão na exibição do "Menor Preço Histórico".
 
+---
 *Construído com foco em escalabilidade e análise de dados por Otávio.*
