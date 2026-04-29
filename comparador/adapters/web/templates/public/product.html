@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block title %}{{ product.display_name }}{% endblock %}
 {% block content %}
-<nav class="breadcrumb"><a href="/public/">← produtos</a></nav>
+<nav class="breadcrumb">
+  <a href="/public/" class="btn btn-primary" style="border-radius: var(--radius-full); padding: 0.5rem 1.25rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    Voltar
+  </a>
+</nav>
 <h1>{{ product.display_name }}</h1>
 <h2>Lojas que vendem — menor preço primeiro</h2>
 

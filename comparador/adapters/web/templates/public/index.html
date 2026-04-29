@@ -7,9 +7,8 @@
   
   <div class="search-container">
     <form method="get" action="/public/" class="search-form">
-      <div class="search-input-wrap" style="display: flex; align-items: center; padding-left: 1.25rem;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #9ca3af; flex-shrink: 0;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" name="q" value="{{ q or '' }}" placeholder="O que você está buscando?" class="search-input" style="padding-left: 0.75rem;">
+      <div class="search-input-wrap" style="display: flex; align-items: center;">
+        <input type="text" name="q" value="{{ q or '' }}" placeholder="O que você está buscando?" class="search-input" style="padding-left: 1.5rem;">
       </div>
       {% if q %}
         <a href="/public/" class="btn-clear" title="Limpar busca">
